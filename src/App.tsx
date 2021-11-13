@@ -1,12 +1,14 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {RootNavigator} from './navigators';
+import {NavigationProvider, ThemeProvider} from './components';
 
 const App: React.FC = () => {
   return (
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
+    <ThemeProvider>
+      <NavigationProvider>
+        <RootNavigator />
+      </NavigationProvider>
+    </ThemeProvider>
   );
 };
 

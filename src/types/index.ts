@@ -6,3 +6,5 @@ export type {
   OnboardingStackParamList,
   RootNavigatorParamsList,
 } from './navigatorTypes/navigatorTypes';
+
+export type {IMainNavScreenProps} from './IMainNavScreenProps/IMainNavScreenProps';

@@ -11,4 +11,5 @@ module.exports = {
       '<rootDir>/testing/fileMock.js',
     '\\.(css|less)$': '<rootDir>/testing/styleMock.js',
   },
+  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
 };

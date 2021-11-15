@@ -2,21 +2,20 @@ import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {OnboardingNavigator} from '../OnboardingNavigator';
 import {MainNavigator} from '../MainNavigator';
-import {navigatorNames} from '../../constants';
+import {NavigatorNames} from '../../types/navigatorTypes';
 
 const RootStack = createNativeStackNavigator();
-
 const RootNavigator: FC = () => {
   return (
     <RootStack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={navigatorNames.ONBOARDING_NAVIGATOR}>
+      initialRouteName={NavigatorNames.OnboardingNavigator}>
       <RootStack.Screen
-        name={navigatorNames.ONBOARDING_NAVIGATOR}
+        name={NavigatorNames.OnboardingNavigator}
         component={OnboardingNavigator}
       />
       <RootStack.Screen
-        name={navigatorNames.MAIN_NAVIGATOR}
+        name={NavigatorNames.MainNavigator}
         component={MainNavigator}
       />
     </RootStack.Navigator>

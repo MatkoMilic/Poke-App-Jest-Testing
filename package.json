@@ -14,10 +14,12 @@
     "@react-navigation/native-stack": "^6.2.5",
     "commitizen": "^4.2.4",
     "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "formik": "^2.2.9",
     "jest-react-native": "^18.0.0",
     "merge": "^2.1.1",
-    "react": "16.13.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-native": "0.63.3",
     "react-native-paper": "^4.10.0",
     "react-native-safe-area-context": "^3.3.2",
@@ -29,8 +31,10 @@
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^1.1.0",
+    "@testing-library/jest-native": "^4.0.2",
     "@testing-library/react-native": "^8.0.0",
     "@types/enzyme": "^3.10.10",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^27.0.2",
     "@types/react": "^17.0.34",
     "@types/react-native": "^0.66.4",
@@ -41,14 +45,17 @@
     "jest": "^25.1.0",
     "jest-transform-stub": "^2.0.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.13.1",
+    "react-test-renderer": "^16.13.1",
     "typescript": "^4.4.4"
   },
   "jest": {
     "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/testing/fileMock.js",
-      "\\.(css|sass)$": "<rootDir>/testing/styleMock.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/testing/fileMock.ts",
+      "\\.(css|sass)$": "<rootDir>/testing/styleMock.ts"
     },
     "transform": {
       ".+\\.(css|scss|png|jpg|svg)$": "jest-transform-stub"
@@ -57,7 +64,7 @@
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
     ],
     "setupFiles": [
-      "<rootDir>/testing/jest-setup.js"
+      "<rootDir>/testing/jest-setup.ts"
     ]
   },
   "config": {

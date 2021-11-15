@@ -1,23 +1,40 @@
 import React, {FC} from 'react';
-import {Text} from 'react-native';
-import {Switch, useTheme} from 'react-native-paper';
-import {ScreenContainer, ThemeContext} from '../../components';
+import {Button, Switch, Text, TouchableOpacity} from 'react-native';
+import {useTheme} from 'react-native-paper';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {ThemeContext} from '../../components';
+import {IMainNavScreenProps} from '../../types/IMainNavScreenProps';
 import style from './styles';
+import {NavigatorNames} from '../../types/navigatorTypes';
 
-const LoadingScreen: FC = () => {
+interface LoadingScreenProps extends IMainNavScreenProps {}
+
+const LoadingScreen: FC<LoadingScreenProps> = ({navigation}) => {
   const theme = useTheme();
   const {toggleTheme, isThemeDark} = React.useContext(ThemeContext);
 
+  const goToProfile = () => {
+    navigation.navigate(NavigatorNames.MainNavigator, {
+      screen: 'PROFILE_SCREEN',
+    });
+  };
+
   return (
-    <ScreenContainer>
-      <Switch
-        style={style.switchElement}
-        color={theme.colors.text}
-        value={isThemeDark}
-        onValueChange={toggleTheme}
-      />
-      <Text>Loading</Text>
-    </ScreenContainer>
+    <SafeAreaView>
+      <TouchableOpacity testID={'touch'}>
+        <Switch
+          testID={'switchTheme'}
+          style={style.switchElement}
+          //color={theme.colors.text}
+          value={isThemeDark}
+          onValueChange={toggleTheme}
+        />
+      </TouchableOpacity>
+      <Text style={{color: 'red'}} testID={'loadingText'}>
+        Loading & theme is: {isThemeDark ? 'dark' : 'light'}
+        <Button title={'Go profile'} onPress={goToProfile}></Button>
+      </Text>
+    </SafeAreaView>
   );
 };
 

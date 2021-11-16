@@ -1,24 +1,16 @@
 import React, {FC} from 'react';
-import {Button, Switch, Text, TouchableOpacity} from 'react-native';
+import {Switch, Text, TouchableOpacity} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ThemeContext} from '../../components';
-import {IMainNavScreenProps} from '../../types/IMainNavScreenProps';
 import style from './styles';
-import {NavigatorNames} from '../../types/navigatorTypes';
+import {IOnboardingNavScreenProps} from '../../types/IOnboardingNavScreenProps';
 
-interface LoadingScreenProps extends IMainNavScreenProps {}
+interface LoadingScreenProps extends IOnboardingNavScreenProps {}
 
-const LoadingScreen: FC<LoadingScreenProps> = ({navigation}) => {
+const LoadingScreen: FC = () => {
   const theme = useTheme();
   const {toggleTheme, isThemeDark} = React.useContext(ThemeContext);
-
-  const goToProfile = () => {
-    navigation.navigate(NavigatorNames.MainNavigator, {
-      screen: 'PROFILE_SCREEN',
-    });
-  };
-
   return (
     <SafeAreaView>
       <TouchableOpacity testID={'touch'}>
@@ -32,7 +24,6 @@ const LoadingScreen: FC<LoadingScreenProps> = ({navigation}) => {
       </TouchableOpacity>
       <Text style={{color: 'red'}} testID={'loadingText'}>
         Loading & theme is: {isThemeDark ? 'dark' : 'light'}
-        <Button title={'Go profile'} onPress={goToProfile}></Button>
       </Text>
     </SafeAreaView>
   );

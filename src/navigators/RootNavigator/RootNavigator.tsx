@@ -9,13 +9,13 @@ const RootNavigator: FC = () => {
   return (
     <RootStack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={NavigatorNames.OnboardingNavigator}>
+      initialRouteName={NavigatorNames.ONBOARDING_NAVIGATOR}>
       <RootStack.Screen
-        name={NavigatorNames.OnboardingNavigator}
+        name={NavigatorNames.ONBOARDING_NAVIGATOR}
         component={OnboardingNavigator}
       />
       <RootStack.Screen
-        name={NavigatorNames.MainNavigator}
+        name={NavigatorNames.MAIN_NAVIGATOR}
         component={MainNavigator}
       />
     </RootStack.Navigator>

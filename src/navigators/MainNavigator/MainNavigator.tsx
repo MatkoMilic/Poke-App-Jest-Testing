@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ProfileScreen, SettingsScreen, PokeListScreen} from '../../screens';
-import {MainNavigatorScreens} from '../../types/navigatorTypes';
+import {MainNavigatorScreens} from '../../types';
 
 const MainStack = createNativeStackNavigator();
 

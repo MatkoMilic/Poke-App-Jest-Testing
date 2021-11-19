@@ -1,52 +1,69 @@
-import '@testing-library/jest-native';
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react-native';
-import {ReactTestRendererJSON} from 'react-test-renderer';
-import {configure, EnzymeAdapter, shallow} from 'enzyme';
-import {LoadingScreen} from '../../screens';
-import {ThemeContext} from './ThemeProvider';
-import Adapter from 'enzyme-adapter-react-16';
+import {Switch, Text} from 'react-native';
+import {fireEvent, render} from '@testing-library/react-native';
+import {ThemeContext, ThemeProvider} from './ThemeProvider';
 
-configure({adapter: new Adapter()});
-
-type treeType = ReactTestRendererJSON | ReactTestRendererJSON[] | null;
-
-const findElement = (tree: treeType, element: string) => {
-  console.log('expect tree: ', tree);
-  console.log('expect element: ', element);
-  return true;
-};
-
-it('find element', () => {
-  let tree = render(<LoadingScreen />).toJSON();
-  //fireEvent.press(switchButton);
-
-  expect(findElement(tree, 'switchTheme')).toBeDefined();
-});
-
-test('first renders with light mode because its default', () => {
-  const {getByTestId, getByText} = render(<LoadingScreen />);
-  expect(getByTestId('loadingText')).toBeDefined();
-  expect(getByText('Loading & theme is: light')).toBeTruthy();
-});
-
-describe('when the toggle theme button is clicked', () => {
-  const {getByTestId, getByText} = render(<LoadingScreen />);
-  const wrapper = shallow(<LoadingScreen />);
-  const Switch = wrapper.find('[testID="switchTheme"]');
-
-  //jest.mock('Switch');
-  const switchButton = getByTestId('switchTheme');
-  beforeEach(() => {
-    fireEvent.press(getByTestId('switchTheme'), 'onValueChange');
-    Switch.simulate('touch');
+describe('ThemeProvider', () => {
+  it('first renders with light mode because its default', () => {
+    const {getByText} = render(
+      <ThemeProvider>
+        <ThemeContext.Consumer>
+          {(value) => (
+            <Text>Is theme light: {value.isThemeDark.toString()}</Text>
+          )}
+        </ThemeContext.Consumer>
+      </ThemeProvider>,
+    );
+    expect(getByText('Is theme light: false')).toBeTruthy();
   });
-  //fireEvent.press(switchButton);
-  //Switch.simulate('touch');
+});
 
-  test('then theme changes', () => {
-    const {getByTestId, getByText} = render(<LoadingScreen />);
-    //expect(getByTestId('loadingText')).toBeDefined();
-    expect(getByText('Loading & theme is: dark')).toBeTruthy();
+describe('toggleTheme', () => {
+  it('check does Theme toggle', () => {
+    const {getByText, getByTestId} = render(
+      <ThemeProvider>
+        <ThemeContext.Consumer>
+          {(value) => (
+            <>
+              <Text>Is theme light: {value.isThemeDark.toString()}</Text>
+              <Switch
+                testID={'themeSwitch'}
+                value={value.isThemeDark}
+                onValueChange={value.toggleTheme}
+              />
+            </>
+          )}
+        </ThemeContext.Consumer>
+      </ThemeProvider>,
+    );
+    const themeSwitch = getByTestId('themeSwitch');
+    fireEvent.press(themeSwitch, 'onValueChange');
+    expect(getByText('Is theme light: true')).toBeTruthy();
+  });
+});
+
+describe('toggleTheme', () => {
+  it('toggle theme and then toggle it back', () => {
+    const {getByText, getByTestId} = render(
+      <ThemeProvider>
+        <ThemeContext.Consumer>
+          {(value) => (
+            <>
+              <Text>Is theme light: {value.isThemeDark.toString()}</Text>
+              <Switch
+                testID={'themeSwitch'}
+                value={value.isThemeDark}
+                onValueChange={value.toggleTheme}
+              />
+            </>
+          )}
+        </ThemeContext.Consumer>
+      </ThemeProvider>,
+    );
+    const themeSwitch = getByTestId('themeSwitch');
+    fireEvent.press(themeSwitch, 'onValueChange');
+    expect(getByText('Is theme light: true')).toBeTruthy();
+    fireEvent.press(themeSwitch, 'onValueChange');
+    expect(getByText('Is theme light: false')).toBeTruthy();
   });
 });

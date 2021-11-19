@@ -1,7 +1,4 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
 import {IOnboardingNavScreenProps} from '../IOnboardingNavScreenProps/IOnboardingNavScreenProps';
-//IOnboardingNavScreenProps
 
 interface MyInterface {
   id: number;

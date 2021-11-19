@@ -13,6 +13,7 @@ import {
   SettingsScreen,
 } from '../../screens';
 import {OnboardingNavigator} from '../OnboardingNavigator';
+import {MainNavigator} from '../MainNavigator';
 configure({adapter: new Adapter()});
 
 describe('Test many aspects of RootNavigator', () => {
@@ -26,18 +27,24 @@ describe('Test many aspects of RootNavigator', () => {
       <RootNavigator />
     </NavigationContainer>,
   );
+  const shallowRootNavigator = shallow(
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>,
+  );
   const isItOnboardingNavigator = mountRootNavigator.containsMatchingElement(
     <OnboardingNavigator />,
   );
-  const itif = (isItOnboardingNavigator: boolean) =>
+  const testIfIsOnboardingNavigator = (isItOnboardingNavigator: boolean) =>
     isItOnboardingNavigator ? it : it.skip;
-  it('check if RootNavigator renders', () => {
+
+  test('check if RootNavigator renders', () => {
     expect(renderRootNavigator.toJSON()).toBeDefined();
   });
   it('check if RootNavigator mounts', () => {
     expect(mountRootNavigator.exists()).toBeTruthy();
   });
-  itif(isItOnboardingNavigator)(
+  testIfIsOnboardingNavigator(isItOnboardingNavigator)(
     'if we go to OnboardingNav check default screen',
     async () => {
       expect(
@@ -68,6 +75,9 @@ describe('Test many aspects of RootNavigator', () => {
     expect(
       mountRootNavigator.containsMatchingElement(<OnboardingNavigator />),
     ).toEqual(true);
+  });
+  it('check if it matches the snapshot', () => {
+    expect(mountRootNavigator).toMatchSnapshot();
   });
   it('check does unmount work on RootNavigator', () => {
     mountRootNavigator.unmount();

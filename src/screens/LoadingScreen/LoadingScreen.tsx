@@ -4,7 +4,7 @@ import {useTheme} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ThemeContext} from '../../components';
 import style from './styles';
-import {IOnboardingNavScreenProps} from '../../types/IOnboardingNavScreenProps';
+import {IOnboardingNavScreenProps} from '../../types';
 
 interface LoadingScreenProps extends IOnboardingNavScreenProps {}
 
@@ -17,7 +17,6 @@ const LoadingScreen: FC = () => {
         <Switch
           testID={'switchTheme'}
           style={style.switchElement}
-          //color={theme.colors.text}
           value={isThemeDark}
           onValueChange={toggleTheme}
         />

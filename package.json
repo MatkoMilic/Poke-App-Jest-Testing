@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.11",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "commitizen": "^4.2.4",
@@ -38,7 +39,7 @@
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^27.0.2",
     "@types/react": "^17.0.34",
-    "@type/react-native": "^0.66.4",
+    "@types/react-native": "0.63.3",
     "@types/react-test-renderer": "^17.0.1s",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
@@ -67,7 +68,7 @@
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
     ],
     "setupFiles": [
-      "<rootDir>/testing/jest-setup.js"
+      "<rootDir>/testing/jest-setup.tsx"
     ]
   },
   "config": {

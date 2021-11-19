@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {OnboardingNavigator} from '../OnboardingNavigator';
 import {MainNavigator} from '../MainNavigator';
-import {NavigatorNames} from '../../types/navigatorTypes';
+import {NavigatorNames} from '../../types';
 
 const RootStack = createNativeStackNavigator();
 const RootNavigator: FC = () => {

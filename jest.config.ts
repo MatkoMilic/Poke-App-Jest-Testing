@@ -14,4 +14,7 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/testing/styleMock.ts',
   },
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(jest-)?@react-native|react-native|react-clone-referenced-element/*)',
+  ],
 };

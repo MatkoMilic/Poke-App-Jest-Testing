@@ -17,11 +17,13 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "formik": "^2.2.9",
+    "jest-mock-extended": "^2.0.4",
     "jest-react-native": "^18.0.0",
     "merge": "^2.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-native": "0.63.3",
+    "react-native-gesture-handler": "^1.10.3",
     "react-native-paper": "^4.10.0",
     "react-native-reanimated": "^2.2.4",
     "react-native-safe-area-context": "^3.3.2",
@@ -30,7 +32,10 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-proposal-private-methods": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-typescript": "^7.16.0",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^1.1.0",
     "@testing-library/jest-native": "^4.0.2",
@@ -41,7 +46,7 @@
     "@types/react": "^17.0.34",
     "@types/react-native": "0.63.3",
     "@types/react-test-renderer": "^17.0.1s",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "^27.3.1",
     "eslint": "^6.5.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
@@ -65,7 +70,7 @@
       ".+\\.(css|scss|png|jpg|svg)$": "jest-transform-stub"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+      "node_modules/(?!react-native-payfort-sdk|react-native)/"
     ],
     "setupFiles": [
       "<rootDir>/testing/jest-setup.tsx"

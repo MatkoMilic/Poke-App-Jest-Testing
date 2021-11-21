@@ -1,7 +1,12 @@
+import 'jsdom-global/register';
 import React from 'react';
 import {Switch, Text} from 'react-native';
 import {fireEvent, render} from '@testing-library/react-native';
 import {ThemeContext, ThemeProvider} from './ThemeProvider';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {configure, mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+configure({adapter: new Adapter()});
 
 describe('ThemeProvider', () => {
   it('first renders with light mode because its default', () => {
@@ -65,5 +70,29 @@ describe('toggleTheme', () => {
     expect(getByText('Is theme light: true')).toBeTruthy();
     fireEvent.press(themeSwitch, 'onValueChange');
     expect(getByText('Is theme light: false')).toBeTruthy();
+  });
+});
+describe('toggleTheme', () => {
+  it('test saving theme to async storage', async () => {
+    const mountContext = mount(
+      <ThemeProvider>
+        <ThemeContext.Consumer>
+          {(value) => (
+            <>
+              <Text>{value.isThemeDark.toString()}</Text>
+              <Switch
+                testID={'themeSwitch'}
+                value={value.isThemeDark}
+                onValueChange={value.toggleTheme}
+              />
+            </>
+          )}
+        </ThemeContext.Consumer>
+      </ThemeProvider>,
+    );
+    const valueText = mountContext.find('Text').first().text();
+    await AsyncStorage.setItem('theme', valueText);
+    let theme = await AsyncStorage.getItem('theme');
+    expect(theme).toBe(valueText);
   });
 });

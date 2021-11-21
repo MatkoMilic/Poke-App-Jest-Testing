@@ -1,9 +1,9 @@
 import 'jsdom-global/register';
 import React from 'react';
-import {act, render} from '@testing-library/react-native';
+import {render} from '@testing-library/react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import RootNavigator from './RootNavigator';
-import {configure, EnzymeAdapter, shallow, mount} from 'enzyme';
+import {configure, shallow, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {
   LoadingScreen,
@@ -13,7 +13,6 @@ import {
   SettingsScreen,
 } from '../../screens';
 import {OnboardingNavigator} from '../OnboardingNavigator';
-import {MainNavigator} from '../MainNavigator';
 configure({adapter: new Adapter()});
 
 describe('Test many aspects of RootNavigator', () => {
@@ -52,11 +51,6 @@ describe('Test many aspects of RootNavigator', () => {
       ).toEqual(true);
     },
   );
-  // it('check does RootNavigator go to expected default screen', () => {
-  //   expect(
-  //     mountRootNavigator.containsMatchingElement(<LoadingScreen />),
-  //   ).toEqual(true);
-  // });
   it('check if another screen is also a child at the same mount', () => {
     expect(
       mountRootNavigator.containsMatchingElement(<ProfileScreen />),

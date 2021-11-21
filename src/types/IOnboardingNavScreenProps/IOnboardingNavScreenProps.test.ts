@@ -1,12 +1,21 @@
-import {IOnboardingNavScreenProps} from '../IOnboardingNavScreenProps/IOnboardingNavScreenProps';
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {
+  RootNavigatorType,
+  OnboardingNavigatorParamList,
+} from '../navigatorTypes';
+import {IOnboardingNavScreenProps} from './IOnboardingNavScreenProps';
 
-interface MyInterface {
-  id: number;
-  createTime: Date;
-}
+var onboardingNavNavigation: CompositeNavigationProp<
+  NativeStackNavigationProp<OnboardingNavigatorParamList>,
+  NativeStackNavigationProp<RootNavigatorType>
+>;
 
-test('MyInterface should have appropriate fields and types', () => {
-  expect({
-    navigation: {},
-  } as IOnboardingNavScreenProps).toBeTruthy();
+describe('IOnboardingNavScreenProps', () => {
+  it('has a navigation that equals expected state', () => {
+    const testNavigation: IOnboardingNavScreenProps = {
+      navigation: onboardingNavNavigation,
+    };
+    expect(testNavigation.navigation).toEqual(onboardingNavNavigation);
+  });
 });

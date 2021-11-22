@@ -9,17 +9,17 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
 describe('ThemeProvider', () => {
-  it('first renders with light mode because its default', () => {
+  it('first renders with dark mode false because its default', () => {
     const {getByText} = render(
       <ThemeProvider>
         <ThemeContext.Consumer>
           {(value) => (
-            <Text>Is theme light: {value.isThemeDark.toString()}</Text>
+            <Text>Is theme dark: {value.isThemeDark.toString()}</Text>
           )}
         </ThemeContext.Consumer>
       </ThemeProvider>,
     );
-    expect(getByText('Is theme light: false')).toBeTruthy();
+    expect(getByText('Is theme dark: false')).toBeTruthy();
   });
 });
 
@@ -30,7 +30,7 @@ describe('toggleTheme', () => {
         <ThemeContext.Consumer>
           {(value) => (
             <>
-              <Text>Is theme light: {value.isThemeDark.toString()}</Text>
+              <Text>Is theme dark: {value.isThemeDark.toString()}</Text>
               <Switch
                 testID={'themeSwitch'}
                 value={value.isThemeDark}
@@ -43,7 +43,7 @@ describe('toggleTheme', () => {
     );
     const themeSwitch = getByTestId('themeSwitch');
     fireEvent.press(themeSwitch, 'onValueChange');
-    expect(getByText('Is theme light: true')).toBeTruthy();
+    expect(getByText('Is theme dark: true')).toBeTruthy();
   });
 });
 
@@ -54,7 +54,7 @@ describe('toggleTheme', () => {
         <ThemeContext.Consumer>
           {(value) => (
             <>
-              <Text>Is theme light: {value.isThemeDark.toString()}</Text>
+              <Text>Is theme dark: {value.isThemeDark.toString()}</Text>
               <Switch
                 testID={'themeSwitch'}
                 value={value.isThemeDark}
@@ -67,9 +67,9 @@ describe('toggleTheme', () => {
     );
     const themeSwitch = getByTestId('themeSwitch');
     fireEvent.press(themeSwitch, 'onValueChange');
-    expect(getByText('Is theme light: true')).toBeTruthy();
+    expect(getByText('Is theme dark: true')).toBeTruthy();
     fireEvent.press(themeSwitch, 'onValueChange');
-    expect(getByText('Is theme light: false')).toBeTruthy();
+    expect(getByText('Is theme dark: false')).toBeTruthy();
   });
 });
 describe('toggleTheme', () => {

@@ -11,12 +11,13 @@
     "noEmit": true,
     "strict": true,
     "target": "esnext",
-    "types": ["@types/jest"]
+    "types": ["@types/jest"],
+    "module": "esnext"
   },
   "exclude": [
     "node_modules",
     "babel.config.ts",
     "metro.config.ts",
-    "<rootDir>/jest.config.ts"
+    "jest.config.ts"
   ]
 }

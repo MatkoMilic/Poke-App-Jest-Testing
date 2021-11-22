@@ -19,6 +19,7 @@
     "formik": "^2.2.9",
     "jest-mock-extended": "^2.0.4",
     "jest-react-native": "^18.0.0",
+    "material-design-icons": "^3.0.1",
     "merge": "^2.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

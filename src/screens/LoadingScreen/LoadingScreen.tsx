@@ -13,15 +13,14 @@ const LoadingScreen: FC = () => {
   const {toggleTheme, isThemeDark} = React.useContext(ThemeContext);
   return (
     <SafeAreaView>
-      <TouchableOpacity testID={'touch'}>
+      <TouchableOpacity>
         <Switch
-          testID={'switchTheme'}
           style={style.switchElement}
           value={isThemeDark}
           onValueChange={toggleTheme}
         />
       </TouchableOpacity>
-      <Text style={{color: 'red'}} testID={'loadingText'}>
+      <Text style={{color: 'red'}}>
         Loading & theme is: {isThemeDark ? 'dark' : 'light'}
       </Text>
     </SafeAreaView>

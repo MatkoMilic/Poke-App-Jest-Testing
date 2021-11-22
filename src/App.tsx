@@ -1,11 +1,14 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {RootNavigator} from './navigators';
+import {NavigationProvider, ThemeProvider} from './components';
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <SafeAreaView>
-      <Text>Start the app.</Text>
-    </SafeAreaView>
+    <ThemeProvider>
+      <NavigationProvider>
+        <RootNavigator />
+      </NavigationProvider>
+    </ThemeProvider>
   );
 };
 

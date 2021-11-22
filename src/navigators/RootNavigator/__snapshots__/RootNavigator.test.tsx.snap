@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test many aspects of RootNavigator check if it matches the snapshot 1`] = `ReactWrapper {}`;

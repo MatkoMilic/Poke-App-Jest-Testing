@@ -17,27 +17,27 @@ exports[`renders correctly 1`] = `
         "opacity": 1,
       }
     }
-    testID="touch"
   >
-    <RCTSwitch
-      accessibilityRole="switch"
-      onChange={[Function]}
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "height": 31,
-            "width": 51,
-          },
-          Object {
-            "borderRadius": 15,
-          },
-        ]
+        Object {
+          "opacity": 1,
+        }
       }
-      testID="switchTheme"
-      value={false}
-    />
+    >
+      <Text>
+        false
+      </Text>
+    </View>
   </View>
   <Text
     style={
@@ -45,7 +45,6 @@ exports[`renders correctly 1`] = `
         "color": "red",
       }
     }
-    testID="loadingText"
   >
     Loading & theme is: 
     light

@@ -153,7 +153,6 @@ exports[`renders correctly 1`] = `
                           "opacity": 1,
                         }
                       }
-                      testID="touch"
                     >
                       <View
                         accessible={true}
@@ -170,7 +169,6 @@ exports[`renders correctly 1`] = `
                             "opacity": 1,
                           }
                         }
-                        testID="switchTheme"
                       >
                         <Text>
                           false
@@ -183,7 +181,6 @@ exports[`renders correctly 1`] = `
                           "color": "red",
                         }
                       }
-                      testID="loadingText"
                     >
                       Loading & theme is: 
                       light

@@ -2,14 +2,11 @@ import React from 'react';
 import {FC} from 'react';
 import ReactNative, {TouchableOpacity, Text} from 'react-native';
 import 'react-native-gesture-handler/jestSetup';
-const mockAsyncStorage = require('@react-native-async-storage/async-storage/jest/async-storage-mock');
+import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
+import mockReanimated from 'react-native-reanimated/mock';
 
 jest.mock('react-native/Libraries/LogBox/LogBox');
-jest.mock('react-native-reanimated', () => {
-  const Reanimated = require('react-native-reanimated/mock');
-  Reanimated.default.call = () => {};
-  return Reanimated;
-});
+jest.mock('react-native-reanimated', () => mockReanimated);
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 

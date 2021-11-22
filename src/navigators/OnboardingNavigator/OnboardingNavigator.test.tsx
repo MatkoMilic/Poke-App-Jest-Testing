@@ -1,8 +1,8 @@
 import 'jsdom-global/register';
 import React from 'react';
-import {render} from '@testing-library/react-native';
+import {render, RenderAPI} from '@testing-library/react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {configure, mount} from 'enzyme';
+import {configure, mount, ReactWrapper} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {
   LoadingScreen,
@@ -12,12 +12,11 @@ import {
   SettingsScreen,
 } from '../../screens';
 import {OnboardingNavigator} from '../OnboardingNavigator';
-import {ReactWrapperType, RenderApiType} from '../../types';
 configure({adapter: new Adapter()});
 
 describe('Test many aspects of OnboardingNavigator', () => {
-  let mountOnboardingNavigator: ReactWrapperType;
-  let renderOnboardingNavigator: RenderApiType;
+  let mountOnboardingNavigator: ReactWrapper;
+  let renderOnboardingNavigator: RenderAPI;
   beforeEach(() => {
     mountOnboardingNavigator = mount(
       <NavigationContainer>

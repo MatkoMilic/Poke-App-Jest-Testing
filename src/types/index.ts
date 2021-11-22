@@ -6,7 +6,6 @@ export type {
   IOnboardingNavScreenProps,
   OnboardingNavigationType,
 } from './IOnboardingNavScreenProps';
-export type {ReactWrapperType, RenderApiType} from './testingTypes';
 export type {
   MainNavigatorKeys,
   NavigatorNameKeys,

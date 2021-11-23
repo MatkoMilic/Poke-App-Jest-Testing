@@ -1,9 +1,6 @@
 import React, {FC} from 'react';
-import {Button, Switch, Text, TouchableOpacity} from 'react-native';
-import {useTheme} from 'react-native-paper';
+import {Button} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {ThemeContext} from '../../components';
-import style from './styles';
 import {
   IOnboardingNavScreenProps,
   MainNavigatorScreens,
@@ -13,26 +10,14 @@ import {
 interface LoadingScreenProps extends IOnboardingNavScreenProps {}
 
 const LoadingScreen: FC<LoadingScreenProps> = ({navigation}) => {
-  const theme = useTheme();
-  const {toggleTheme, isThemeDark} = React.useContext(ThemeContext);
-  const goToProfile = () => {
+  const goToSettings = () => {
     navigation.navigate(NavigatorNames.MAIN_NAVIGATOR, {
-      screen: MainNavigatorScreens.PROFILE_SCREEN,
+      screen: MainNavigatorScreens.SETTINGS_SCREEN,
     });
   };
   return (
     <SafeAreaView>
-      <TouchableOpacity>
-        <Switch
-          style={style.switchElement}
-          value={isThemeDark}
-          onValueChange={toggleTheme}
-        />
-      </TouchableOpacity>
-      <Text style={{color: 'red'}}>
-        Loading & theme is: {isThemeDark ? 'dark' : 'light'}
-      </Text>
-      <Button title="Go To Profile Screen" onPress={goToProfile}></Button>
+      <Button title="Go To Profile Screen" onPress={goToSettings}></Button>
     </SafeAreaView>
   );
 };

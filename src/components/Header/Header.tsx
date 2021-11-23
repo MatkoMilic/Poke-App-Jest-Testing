@@ -5,9 +5,9 @@ import {styles} from './styles';
 
 type AllRNAppbarProps = React.ComponentProps<typeof RNPaperAppbar>;
 type RNAppbarProps = Omit<AllRNAppbarProps, 'children'>;
-type IHeader = RNAppbarProps & {
-  goToScreenLeftIcon?: () => void;
-  goToScreenRightIcon?: () => void;
+type HeaderType = RNAppbarProps & {
+  leftOnPress?: () => void;
+  rightOnPress?: () => void;
   headerTitle?: string;
   headerSubtitle?: string;
   leftIcon?: IconSource;
@@ -15,21 +15,17 @@ type IHeader = RNAppbarProps & {
 };
 
 const Header = ({
-  goToScreenLeftIcon,
-  goToScreenRightIcon,
   headerTitle,
   headerSubtitle,
   leftIcon,
   rightIcon,
+  rightOnPress,
+  leftOnPress,
   ...otherProps
-}: IHeader) => {
+}: HeaderType) => {
   return (
     <RNPaperAppbar.Header style={styles.header} {...otherProps}>
-      <RNPaperAppbar.Action
-        icon={leftIcon!}
-        onPress={goToScreenLeftIcon}
-        size={30}
-      />
+      <RNPaperAppbar.Action icon={leftIcon!} onPress={leftOnPress} size={30} />
       <RNPaperAppbar.Content
         style={styles.headerContent}
         title={headerTitle}
@@ -37,7 +33,7 @@ const Header = ({
       />
       <RNPaperAppbar.Action
         icon={rightIcon!}
-        onPress={goToScreenRightIcon}
+        onPress={rightOnPress}
         size={30}
       />
     </RNPaperAppbar.Header>

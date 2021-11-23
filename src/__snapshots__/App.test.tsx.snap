@@ -222,7 +222,7 @@ exports[`renders correctly 1`] = `
                             ]
                           }
                         >
-                          go profile s
+                          Go To Profile Screen
                         </Text>
                       </View>
                     </View>

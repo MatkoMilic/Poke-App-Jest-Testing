@@ -1,7 +1,9 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {Header, ScreenContainer} from '../../components';
+import {Text, TouchableOpacity, Switch} from 'react-native';
+import {useTheme} from 'react-native-paper';
+import {Header, ScreenContainer, ThemeContext} from '../../components';
 import {IMainNavScreenProps, MainNavigatorScreens} from '../../types';
+import style from './styles';
 
 interface SettingsScreenProps extends IMainNavScreenProps {}
 
@@ -12,6 +14,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
   const goToPokeList = () => {
     navigation.navigate(MainNavigatorScreens.POKELIST_SCREEN);
   };
+  const theme = useTheme();
+  const {toggleTheme, isThemeDark} = React.useContext(ThemeContext);
+
   return (
     <ScreenContainer>
       <Header
@@ -22,6 +27,16 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
         leftOnPress={goToPokeList}
         rightOnPress={goToProfile}
       />
+      <TouchableOpacity>
+        <Switch
+          style={style.switchElement}
+          value={isThemeDark}
+          onValueChange={toggleTheme}
+        />
+      </TouchableOpacity>
+      <Text style={{color: 'red'}}>
+        Loading & theme is: {isThemeDark ? 'true' : 'false'}
+      </Text>
       <Text>Welcome to settings</Text>
     </ScreenContainer>
   );

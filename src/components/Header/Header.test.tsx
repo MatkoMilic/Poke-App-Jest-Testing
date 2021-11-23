@@ -1,30 +1,36 @@
 import 'jsdom-global/register';
 import React from 'react';
-import {render} from '@testing-library/react-native';
-import {configure, mount, ReactWrapper} from 'enzyme';
+import {render, fireEvent} from '@testing-library/react-native';
+import {configure, mount, ReactWrapper, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Header from './Header';
 import {ReactTestRendererJSON} from 'react-test-renderer';
 import renderer from 'react-test-renderer';
-import {MainNavigationType, MainNavigatorScreens} from '../../types';
+import {
+  MainNavigationType,
+  MainNavigatorScreens,
+  OnboardingNavigationType,
+} from '../../types';
+import {LoadingScreen, SettingsScreen} from '../../screens';
 configure({adapter: new Adapter()});
 
+const goSettingsFunc = jest.fn();
 let navigation: MainNavigationType;
 const goToSettings = () => {
   navigation.navigate(MainNavigatorScreens.SETTINGS_SCREEN);
 };
 
-describe('ThemeProvider', () => {
+describe('Header', () => {
   let renderHeader: ReactTestRendererJSON | ReactTestRendererJSON[] | null;
   let mountHeader: any;
   let createHeader: ReactTestRendererJSON | ReactTestRendererJSON[] | null;
   beforeEach(() => {
-    mountHeader = mount(<Header></Header>);
-    //mountHeader = mount(<Header></Header>);
+    mountHeader = mount(<Header leftOnPress={goSettingsFunc} />);
+    renderHeader = render(<Header></Header>).toJSON();
     createHeader = renderer
       .create(
         <Header
-          goToScreenLeftIcon={goToSettings}
+          leftOnPress={goToSettings}
           headerTitle="Poke Profile"
           leftIcon="account-cog"
           rightIcon="clipboard-list"
@@ -33,7 +39,6 @@ describe('ThemeProvider', () => {
       )
       .toJSON();
     expect(createHeader).toMatchSnapshot();
-    renderHeader = render(<Header></Header>).toJSON();
   });
   it('does header mount', async () => {
     expect(mountHeader).toBeDefined();
@@ -48,7 +53,8 @@ describe('ThemeProvider', () => {
   it('does header show children', () => {
     expect(createHeader).toMatchSnapshot();
   });
-  it('onPress children test', () => {
-    //expect(mountHeader).toMatchSnapshot();
+  it('does onPress work', () => {
+    mountHeader.find(Header).first().props().leftOnPress!();
+    expect(goSettingsFunc).toHaveBeenCalled();
   });
 });

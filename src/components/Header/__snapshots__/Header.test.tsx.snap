@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ThemeProvider does header mount 1`] = `
+exports[`Header does header mount 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   style={
@@ -365,7 +365,7 @@ exports[`ThemeProvider does header mount 1`] = `
 </RCTSafeAreaView>
 `;
 
-exports[`ThemeProvider does header render 1`] = `
+exports[`Header does header render 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   style={
@@ -730,7 +730,7 @@ exports[`ThemeProvider does header render 1`] = `
 </RCTSafeAreaView>
 `;
 
-exports[`ThemeProvider does header show children 1`] = `
+exports[`Header does header show children 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   style={
@@ -1095,7 +1095,7 @@ exports[`ThemeProvider does header show children 1`] = `
 </RCTSafeAreaView>
 `;
 
-exports[`ThemeProvider does header show children 2`] = `
+exports[`Header does header show children 2`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   style={
@@ -1460,7 +1460,7 @@ exports[`ThemeProvider does header show children 2`] = `
 </RCTSafeAreaView>
 `;
 
-exports[`ThemeProvider does header unmount 1`] = `
+exports[`Header does header unmount 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   style={
@@ -1825,7 +1825,7 @@ exports[`ThemeProvider does header unmount 1`] = `
 </RCTSafeAreaView>
 `;
 
-exports[`ThemeProvider onPress children test 1`] = `
+exports[`Header does onPress work 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   style={

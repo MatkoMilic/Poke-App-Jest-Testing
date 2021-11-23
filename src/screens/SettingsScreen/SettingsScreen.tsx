@@ -15,12 +15,12 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
   return (
     <ScreenContainer>
       <Header
-        goToScreenLeftIcon={goToProfile}
-        goToScreenRightIcon={goToPokeList}
         headerTitle="Poke Settings"
-        leftIcon="home-account"
-        rightIcon="clipboard-list"
+        leftIcon="clipboard-list"
+        rightIcon="account-cog"
         headerSubtitle="2front"
+        leftOnPress={goToPokeList}
+        rightOnPress={goToProfile}
       />
       <Text>Welcome to settings</Text>
     </ScreenContainer>

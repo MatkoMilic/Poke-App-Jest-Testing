@@ -16,12 +16,12 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({navigation}) => {
   return (
     <ScreenContainer>
       <Header
-        goToScreenLeftIcon={goToSettings}
-        goToScreenRightIcon={goToPokeList}
         headerTitle="Poke Profile"
         leftIcon="account-cog"
         rightIcon="clipboard-list"
         headerSubtitle="2front"
+        leftOnPress={goToPokeList}
+        rightOnPress={goToSettings}
       />
       <Text>Welcome to profile screen</Text>
     </ScreenContainer>

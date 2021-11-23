@@ -15,12 +15,12 @@ const PokeListScreen: React.FC<ProfileScreenProps> = ({navigation}) => {
   return (
     <ScreenContainer>
       <Header
-        goToScreenLeftIcon={goToSettings}
-        goToScreenRightIcon={goToProfile}
         headerTitle="Poke Profile"
         leftIcon="account-cog"
         rightIcon="clipboard-list"
         headerSubtitle="2front"
+        leftOnPress={goToProfile}
+        rightOnPress={goToSettings}
       />
       <Text>Welcome to poke list</Text>
     </ScreenContainer>

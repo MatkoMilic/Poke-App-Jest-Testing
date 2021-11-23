@@ -1,8 +1,8 @@
 import 'jsdom-global/register';
 import React from 'react';
-import {act, render} from '@testing-library/react-native';
+import {render} from '@testing-library/react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {configure, EnzymeAdapter, shallow, mount} from 'enzyme';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {
   LoadingScreen,
@@ -12,9 +12,13 @@ import {
   SettingsScreen,
 } from '../../screens';
 import {MainNavigator} from '../MainNavigator';
+import {MainNavigationType, OnboardingNavigationType} from '../../types';
 configure({adapter: new Adapter()});
 
 describe('Test many aspects of MainNavigator', () => {
+  let mainNvigation: MainNavigationType;
+  let onboardingNavigation: OnboardingNavigationType;
+
   const mountMainNavigator = mount(
     <NavigationContainer>
       <MainNavigator />
@@ -33,21 +37,29 @@ describe('Test many aspects of MainNavigator', () => {
   });
   it('check does MainNavigator go to expected default screen', () => {
     expect(
-      mountMainNavigator.containsMatchingElement(<ProfileScreen />),
+      mountMainNavigator.containsMatchingElement(
+        <ProfileScreen navigation={mainNvigation} />,
+      ),
     ).toEqual(true);
   });
   it('check if another screen is also a child at the same mount', () => {
     expect(
-      mountMainNavigator.containsMatchingElement(<LoadingScreen />),
+      mountMainNavigator.containsMatchingElement(
+        <LoadingScreen navigation={onboardingNavigation} />,
+      ),
     ).toEqual(false);
     expect(mountMainNavigator.containsMatchingElement(<LoginScreen />)).toEqual(
       false,
     );
     expect(
-      mountMainNavigator.containsMatchingElement(<PokeListScreen />),
+      mountMainNavigator.containsMatchingElement(
+        <PokeListScreen navigation={mainNvigation} />,
+      ),
     ).toEqual(false);
     expect(
-      mountMainNavigator.containsMatchingElement(<SettingsScreen />),
+      mountMainNavigator.containsMatchingElement(
+        <SettingsScreen navigation={mainNvigation} />,
+      ),
     ).toEqual(false);
   });
   it('check is the proper navigator present', () => {

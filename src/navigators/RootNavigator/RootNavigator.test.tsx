@@ -13,9 +13,12 @@ import {
   SettingsScreen,
 } from '../../screens';
 import {OnboardingNavigator} from '../OnboardingNavigator';
+import {MainNavigationType, OnboardingNavigationType} from '../../types';
 configure({adapter: new Adapter()});
 
 describe('Test many aspects of RootNavigator', () => {
+  let mainNvigation: MainNavigationType;
+  let onboardingNavigation: OnboardingNavigationType;
   const mountRootNavigator = mount(
     <NavigationContainer>
       <RootNavigator />
@@ -47,22 +50,30 @@ describe('Test many aspects of RootNavigator', () => {
     'if we go to OnboardingNav check default screen',
     async () => {
       expect(
-        mountRootNavigator.containsMatchingElement(<LoadingScreen />),
+        mountRootNavigator.containsMatchingElement(
+          <LoadingScreen navigation={onboardingNavigation} />,
+        ),
       ).toEqual(true);
     },
   );
   it('check if another screen is also a child at the same mount', () => {
     expect(
-      mountRootNavigator.containsMatchingElement(<ProfileScreen />),
+      mountRootNavigator.containsMatchingElement(
+        <ProfileScreen navigation={mainNvigation} />,
+      ),
     ).toEqual(false);
     expect(mountRootNavigator.containsMatchingElement(<LoginScreen />)).toEqual(
       false,
     );
     expect(
-      mountRootNavigator.containsMatchingElement(<PokeListScreen />),
+      mountRootNavigator.containsMatchingElement(
+        <PokeListScreen navigation={mainNvigation} />,
+      ),
     ).toEqual(false);
     expect(
-      mountRootNavigator.containsMatchingElement(<SettingsScreen />),
+      mountRootNavigator.containsMatchingElement(
+        <SettingsScreen navigation={mainNvigation} />,
+      ),
     ).toEqual(false);
   });
   it('check is the proper navigator a child of RootNavigator', () => {

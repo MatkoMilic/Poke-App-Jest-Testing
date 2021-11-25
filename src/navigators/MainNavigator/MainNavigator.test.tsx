@@ -1,6 +1,6 @@
 import 'jsdom-global/register';
 import React from 'react';
-import {render, waitFor} from '@testing-library/react-native';
+import {render} from '@testing-library/react-native';
 import renderer from 'react-test-renderer';
 import {NavigationContainer} from '@react-navigation/native';
 import {configure, mount, shallow} from 'enzyme';
@@ -9,7 +9,6 @@ import {
   LoadingScreen,
   LoginScreen,
   PokeListScreen,
-  ProfileScreen,
   SettingsScreen,
 } from '../../screens';
 import {MainNavigator} from '../MainNavigator';
@@ -69,9 +68,13 @@ describe('Test many aspects of MainNavigator', () => {
         />,
       ),
     ).toEqual(false);
-    expect(mountMainNavigator.containsMatchingElement(<LoginScreen />)).toEqual(
-      false,
-    );
+    expect(
+      mountMainNavigator.containsMatchingElement(
+        <LoginScreen
+          navigation={onboardingNavigation as OnboardingNavigationType}
+        />,
+      ),
+    ).toEqual(false);
     expect(
       mountMainNavigator.containsMatchingElement(
         <PokeListScreen navigation={mainNavigation as MainNavigationType} />,

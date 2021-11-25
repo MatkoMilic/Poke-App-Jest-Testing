@@ -13,6 +13,7 @@
     "@react-native-async-storage/async-storage": "^1.15.11",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
+    "@testing-library/jest-dom": "^5.15.1",
     "commitizen": "^4.2.4",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",

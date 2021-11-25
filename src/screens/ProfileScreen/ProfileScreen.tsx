@@ -19,8 +19,8 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({navigation}) => {
         leftIcon="account-cog"
         rightIcon="clipboard-list"
         headerSubtitle="2front"
-        leftOnPress={goToPokeList}
-        rightOnPress={goToSettings}
+        leftOnPress={goToSettings}
+        rightOnPress={goToPokeList}
       />
       <Text testID={'profileScreenText'}>Welcome to profile screen</Text>
     </ScreenContainer>

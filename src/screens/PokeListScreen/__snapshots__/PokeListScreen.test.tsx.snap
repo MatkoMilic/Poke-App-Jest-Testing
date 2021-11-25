@@ -223,7 +223,7 @@ exports[`pokelist screen renders correctly 1`] = `
             ]
           }
         >
-          Poke Profile
+          List of Pokemons
         </Text>
         <Text
           numberOfLines={1}

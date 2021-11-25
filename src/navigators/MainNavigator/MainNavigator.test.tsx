@@ -1,8 +1,9 @@
 import 'jsdom-global/register';
 import React from 'react';
-import {render} from '@testing-library/react-native';
+import {render, waitFor} from '@testing-library/react-native';
+import renderer from 'react-test-renderer';
 import {NavigationContainer} from '@react-navigation/native';
-import {configure, mount} from 'enzyme';
+import {configure, mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {
   LoadingScreen,
@@ -16,9 +17,16 @@ import {MainNavigationType, OnboardingNavigationType} from '../../types';
 configure({adapter: new Adapter()});
 
 describe('Test many aspects of MainNavigator', () => {
-  let mainNvigation: MainNavigationType;
-  let onboardingNavigation: OnboardingNavigationType;
-
+  let mainNavigation: Partial<MainNavigationType>;
+  let onboardingNavigation: Partial<OnboardingNavigationType>;
+  beforeEach(() => {
+    mainNavigation = {
+      dispatch: jest.fn(),
+    };
+    onboardingNavigation = {
+      dispatch: jest.fn(),
+    };
+  });
   const mountMainNavigator = mount(
     <NavigationContainer>
       <MainNavigator />
@@ -29,23 +37,36 @@ describe('Test many aspects of MainNavigator', () => {
       <MainNavigator />
     </NavigationContainer>,
   );
+  const shallowMainNavigator = shallow(
+    <NavigationContainer>
+      <MainNavigator />
+    </NavigationContainer>,
+  );
+  test('check does it match Snapshot', () => {
+    const tree = renderer
+      .create(
+        <NavigationContainer>
+          <MainNavigator />
+        </NavigationContainer>,
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
   it('check if MainNavigator renders', () => {
     expect(renderMainNavigator.toJSON()).toBeDefined();
   });
   it('check if MainNavigator mounts', () => {
     expect(mountMainNavigator.exists()).toBeTruthy();
   });
-  it('check does MainNavigator go to expected default screen', () => {
-    expect(
-      mountMainNavigator.containsMatchingElement(
-        <ProfileScreen navigation={mainNvigation} />,
-      ),
-    ).toEqual(true);
+  it('check does MainNavigator go to expected default screen', async () => {
+    expect(mountMainNavigator.find('profileScreenText')).toBeDefined();
   });
   it('check if another screen is also a child at the same mount', () => {
     expect(
       mountMainNavigator.containsMatchingElement(
-        <LoadingScreen navigation={onboardingNavigation} />,
+        <LoadingScreen
+          navigation={onboardingNavigation as OnboardingNavigationType}
+        />,
       ),
     ).toEqual(false);
     expect(mountMainNavigator.containsMatchingElement(<LoginScreen />)).toEqual(
@@ -53,12 +74,12 @@ describe('Test many aspects of MainNavigator', () => {
     );
     expect(
       mountMainNavigator.containsMatchingElement(
-        <PokeListScreen navigation={mainNvigation} />,
+        <PokeListScreen navigation={mainNavigation as MainNavigationType} />,
       ),
     ).toEqual(false);
     expect(
       mountMainNavigator.containsMatchingElement(
-        <SettingsScreen navigation={mainNvigation} />,
+        <SettingsScreen navigation={mainNavigation as MainNavigationType} />,
       ),
     ).toEqual(false);
   });

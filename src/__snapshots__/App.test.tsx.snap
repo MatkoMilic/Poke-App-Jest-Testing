@@ -179,6 +179,11 @@ exports[`renders correctly 1`] = `
                         </Text>
                       </View>
                     </View>
+                    <Text
+                      testID="loadingText"
+                    >
+                      Loading...please wait.
+                    </Text>
                   </RNCSafeAreaView>
                 </View>
               </RNSScreen>

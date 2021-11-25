@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`profile screen renders correctly 1`] = `
 <RNCSafeAreaView
   style={
     Array [
@@ -373,7 +373,9 @@ exports[`renders correctly 1`] = `
       </View>
     </View>
   </RCTSafeAreaView>
-  <Text>
+  <Text
+    testID="profileScreenText"
+  >
     Welcome to profile screen
   </Text>
 </RNCSafeAreaView>

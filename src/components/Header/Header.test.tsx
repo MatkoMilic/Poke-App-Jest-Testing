@@ -6,12 +6,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import Header from './Header';
 import {ReactTestRendererJSON} from 'react-test-renderer';
 import renderer from 'react-test-renderer';
-import {
-  MainNavigationType,
-  MainNavigatorScreens,
-  OnboardingNavigationType,
-} from '../../types';
-import {LoadingScreen, SettingsScreen} from '../../screens';
+import {MainNavigationType, MainNavigatorScreens} from '../../types';
 configure({adapter: new Adapter()});
 
 const goSettingsFunc = jest.fn();

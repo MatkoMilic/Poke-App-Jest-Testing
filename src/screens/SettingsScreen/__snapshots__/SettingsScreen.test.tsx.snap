@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SettingsScreen change theme renders correctly 1`] = `
+exports[`SettingsScreen change theme settings screen renders correctly 1`] = `
 <RNCSafeAreaView
   style={
     Array [
@@ -404,6 +404,7 @@ exports[`SettingsScreen change theme renders correctly 1`] = `
           "opacity": 1,
         }
       }
+      testID="testSwitch"
     >
       <Text>
         false
@@ -416,9 +417,9 @@ exports[`SettingsScreen change theme renders correctly 1`] = `
         "color": "red",
       }
     }
+    testID="isThemeDarkText"
   >
-    Loading & theme is: 
-    false
+    Theme at the moment is: false
   </Text>
   <Text>
     Welcome to settings

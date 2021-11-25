@@ -3,7 +3,7 @@ import React from 'react';
 import {render} from '@testing-library/react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import RootNavigator from './RootNavigator';
-import {configure, shallow, mount} from 'enzyme';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {
   LoadingScreen,
@@ -17,19 +17,22 @@ import {MainNavigationType, OnboardingNavigationType} from '../../types';
 configure({adapter: new Adapter()});
 
 describe('Test many aspects of RootNavigator', () => {
-  let mainNvigation: MainNavigationType;
-  let onboardingNavigation: OnboardingNavigationType;
+  let mainNavigation: Partial<MainNavigationType>;
+  let onboardingNavigation: Partial<OnboardingNavigationType>;
+  beforeEach(() => {
+    mainNavigation = {
+      dispatch: jest.fn(),
+    };
+    onboardingNavigation = {
+      dispatch: jest.fn(),
+    };
+  });
   const mountRootNavigator = mount(
     <NavigationContainer>
       <RootNavigator />
     </NavigationContainer>,
   );
   const renderRootNavigator = render(
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>,
-  );
-  const shallowRootNavigator = shallow(
     <NavigationContainer>
       <RootNavigator />
     </NavigationContainer>,
@@ -49,17 +52,13 @@ describe('Test many aspects of RootNavigator', () => {
   testIfIsOnboardingNavigator(isItOnboardingNavigator)(
     'if we go to OnboardingNav check default screen',
     async () => {
-      expect(
-        mountRootNavigator.containsMatchingElement(
-          <LoadingScreen navigation={onboardingNavigation} />,
-        ),
-      ).toEqual(true);
+      expect(mountRootNavigator.find('loadingText')).toBeDefined();
     },
   );
   it('check if another screen is also a child at the same mount', () => {
     expect(
       mountRootNavigator.containsMatchingElement(
-        <ProfileScreen navigation={mainNvigation} />,
+        <ProfileScreen navigation={mainNavigation as MainNavigationType} />,
       ),
     ).toEqual(false);
     expect(mountRootNavigator.containsMatchingElement(<LoginScreen />)).toEqual(
@@ -67,12 +66,12 @@ describe('Test many aspects of RootNavigator', () => {
     );
     expect(
       mountRootNavigator.containsMatchingElement(
-        <PokeListScreen navigation={mainNvigation} />,
+        <PokeListScreen navigation={mainNavigation as MainNavigationType} />,
       ),
     ).toEqual(false);
     expect(
       mountRootNavigator.containsMatchingElement(
-        <SettingsScreen navigation={mainNvigation} />,
+        <SettingsScreen navigation={mainNavigation as MainNavigationType} />,
       ),
     ).toEqual(false);
   });

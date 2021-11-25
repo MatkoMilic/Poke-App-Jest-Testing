@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`loading screen renders correctly 1`] = `
 <RNCSafeAreaView>
   <View
     accessibilityRole="button"
@@ -43,5 +43,10 @@ exports[`renders correctly 1`] = `
       </Text>
     </View>
   </View>
+  <Text
+    testID="loadingText"
+  >
+    Loading...please wait.
+  </Text>
 </RNCSafeAreaView>
 `;

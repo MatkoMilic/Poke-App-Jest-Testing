@@ -414,7 +414,7 @@ exports[`SettingsScreen change theme settings screen renders correctly 1`] = `
   <Text
     style={
       Object {
-        "color": "red",
+        "display": "none",
       }
     }
     testID="isThemeDarkText"

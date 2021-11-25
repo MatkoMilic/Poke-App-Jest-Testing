@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Button} from 'react-native';
+import {Button, Text} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {
   IOnboardingNavScreenProps,
@@ -18,6 +18,7 @@ const LoadingScreen: FC<LoadingScreenProps> = ({navigation}) => {
   return (
     <SafeAreaView>
       <Button title="Go To Profile Screen" onPress={goToSettings}></Button>
+      <Text testID={'loadingText'}>Loading...please wait.</Text>
     </SafeAreaView>
   );
 };

@@ -29,13 +29,14 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
       />
       <TouchableOpacity>
         <Switch
+          testID="testSwitch"
           style={style.switchElement}
           value={isThemeDark}
           onValueChange={toggleTheme}
         />
       </TouchableOpacity>
-      <Text style={{color: 'red'}}>
-        Loading & theme is: {isThemeDark ? 'true' : 'false'}
+      <Text testID={'isThemeDarkText'} style={{color: 'red'}}>
+        {`Theme at the moment is: ${isThemeDark.toString()}`}
       </Text>
       <Text>Welcome to settings</Text>
     </ScreenContainer>

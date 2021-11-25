@@ -2,7 +2,6 @@ import React from 'react';
 import {Text} from 'react-native';
 import {Header, ScreenContainer} from '../../components';
 import {IMainNavScreenProps, MainNavigatorScreens} from '../../types';
-import {PokeListScreen} from '../PokeListScreen';
 
 interface ProfileScreenProps extends IMainNavScreenProps {}
 
@@ -23,7 +22,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({navigation}) => {
         leftOnPress={goToPokeList}
         rightOnPress={goToSettings}
       />
-      <Text>Welcome to profile screen</Text>
+      <Text testID={'profileScreenText'}>Welcome to profile screen</Text>
     </ScreenContainer>
   );
 };

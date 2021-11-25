@@ -22,4 +22,7 @@ export default StyleSheet.create({
     padding: 20,
     margin: 10,
   },
+  themeText_TESTING: {
+    display: 'none',
+  },
 });

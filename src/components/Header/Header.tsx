@@ -25,17 +25,21 @@ const Header = ({
 }: HeaderType) => {
   return (
     <RNPaperAppbar.Header style={styles.header} {...otherProps}>
-      <RNPaperAppbar.Action icon={leftIcon!} onPress={leftOnPress} size={30} />
+      {leftIcon ? (
+        <RNPaperAppbar.Action icon={leftIcon} onPress={leftOnPress} size={30} />
+      ) : null}
       <RNPaperAppbar.Content
         style={styles.headerContent}
         title={headerTitle}
         subtitle={headerSubtitle}
       />
-      <RNPaperAppbar.Action
-        icon={rightIcon!}
-        onPress={rightOnPress}
-        size={30}
-      />
+      {rightIcon ? (
+        <RNPaperAppbar.Action
+          icon={rightIcon}
+          onPress={rightOnPress}
+          size={30}
+        />
+      ) : null}
     </RNPaperAppbar.Header>
   );
 };

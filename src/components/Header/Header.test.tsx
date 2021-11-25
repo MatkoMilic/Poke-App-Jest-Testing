@@ -1,7 +1,7 @@
 import 'jsdom-global/register';
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react-native';
-import {configure, mount, ReactWrapper, shallow} from 'enzyme';
+import {render} from '@testing-library/react-native';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Header from './Header';
 import {ReactTestRendererJSON} from 'react-test-renderer';

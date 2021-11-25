@@ -71,7 +71,7 @@ describe('SettingsScreen change theme', () => {
     expect(getByText('Theme at the moment is: true')).toBeTruthy();
   });
   it('test does saved theme in async storage match the right theme', async () => {
-    const {getByTestId, getByText} = render(
+    const {getByTestId} = render(
       <ThemeProvider>
         <SettingsScreen navigation={navigation as MainNavigationType} />
       </ThemeProvider>,

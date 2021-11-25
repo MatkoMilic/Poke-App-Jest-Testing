@@ -15,7 +15,7 @@ const PokeListScreen: React.FC<ProfileScreenProps> = ({navigation}) => {
   return (
     <ScreenContainer>
       <Header
-        headerTitle="Poke Profile"
+        headerTitle="List of Pokemons"
         leftIcon="account-cog"
         rightIcon="clipboard-list"
         headerSubtitle="2front"

@@ -60,9 +60,13 @@ describe('Test many aspects of RootNavigator', () => {
         <ProfileScreen navigation={mainNavigation as MainNavigationType} />,
       ),
     ).toEqual(false);
-    expect(mountRootNavigator.containsMatchingElement(<LoginScreen />)).toEqual(
-      false,
-    );
+    expect(
+      mountRootNavigator.containsMatchingElement(
+        <LoginScreen
+          navigation={onboardingNavigation as OnboardingNavigationType}
+        />,
+      ),
+    ).toEqual(false);
     expect(
       mountRootNavigator.containsMatchingElement(
         <PokeListScreen navigation={mainNavigation as MainNavigationType} />,

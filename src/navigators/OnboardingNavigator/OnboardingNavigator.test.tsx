@@ -54,7 +54,11 @@ describe('Test many aspects of OnboardingNavigator', () => {
       ),
     ).toEqual(false);
     expect(
-      mountOnboardingNavigator.containsMatchingElement(<LoginScreen />),
+      mountOnboardingNavigator.containsMatchingElement(
+        <LoginScreen
+          navigation={onboardingNavigation as OnboardingNavigationType}
+        />,
+      ),
     ).toEqual(false);
     expect(
       mountOnboardingNavigator.containsMatchingElement(

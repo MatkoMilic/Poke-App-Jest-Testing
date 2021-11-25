@@ -3,7 +3,7 @@ import {Text, TouchableOpacity, Switch} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import {Header, ScreenContainer, ThemeContext} from '../../components';
 import {IMainNavScreenProps, MainNavigatorScreens} from '../../types';
-import style from './styles';
+import styles from './styles';
 
 interface SettingsScreenProps extends IMainNavScreenProps {}
 
@@ -30,12 +30,12 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({navigation}) => {
       <TouchableOpacity>
         <Switch
           testID="testSwitch"
-          style={style.switchElement}
+          style={styles.switchElement}
           value={isThemeDark}
           onValueChange={toggleTheme}
         />
       </TouchableOpacity>
-      <Text testID={'isThemeDarkText'} style={{color: 'red'}}>
+      <Text testID={'isThemeDarkText'} style={styles.themeText_TESTING}>
         {`Theme at the moment is: ${isThemeDark.toString()}`}
       </Text>
       <Text>Welcome to settings</Text>

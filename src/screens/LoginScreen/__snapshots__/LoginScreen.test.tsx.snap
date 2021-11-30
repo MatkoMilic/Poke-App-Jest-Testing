@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`login screen renders correctly 1`] = `
+exports[`LoginScreen LoginScreen renders correctly 1`] = `
 <RNCSafeAreaView
   style={
     Array [
@@ -21,6 +21,7 @@ exports[`login screen renders correctly 1`] = `
         onChangeText={[Function]}
         placeholder="Your email please"
         rejectResponderTermination={true}
+        testID="InputFieldEmail"
         underlineColorAndroid="transparent"
         value=""
       />
@@ -30,6 +31,7 @@ exports[`login screen renders correctly 1`] = `
             "color": "red",
           }
         }
+        testID="errorEmail"
       />
       <TextInput
         allowFontScaling={true}
@@ -37,6 +39,7 @@ exports[`login screen renders correctly 1`] = `
         placeholder="Your password please"
         rejectResponderTermination={true}
         secureTextEntry={true}
+        testID="InputFieldPassword"
         underlineColorAndroid="transparent"
         value=""
       />
@@ -86,6 +89,7 @@ exports[`login screen renders correctly 1`] = `
               },
             ]
           }
+          testID="buttonHandleSubmit"
         >
           <View
             style={

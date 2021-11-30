@@ -9,7 +9,7 @@ import {useOnSubmit} from '../../utils';
 interface LoginScreenProps extends IOnboardingNavScreenProps {}
 
 const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
-  const {onSubmit} = useOnSubmit(navigation);
+  const {onSubmitRedirect} = useOnSubmit(navigation);
 
   return (
     <ScreenContainer>
@@ -18,7 +18,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
         <Formik
           initialValues={{email: '', password: ''}}
           onSubmit={(values) => {
-            onSubmit(values.email, values.password);
+            onSubmitRedirect(values.email, values.password);
           }}
           validationSchema={loginSchema}
           component={LoginForm}

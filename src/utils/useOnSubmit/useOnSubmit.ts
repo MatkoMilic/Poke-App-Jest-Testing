@@ -44,7 +44,7 @@ const useOnSubmit = (navigation: OnboardingNavigationType) => {
     }
   };
 
-  const onSubmit = async (email: string, password: string) => {
+  const onSubmitRedirect = async (email: string, password: string) => {
     const doesUserExistAlready = await AsyncStorage.getItem(email);
     if (!doesUserExistAlready) {
       return signUpUser(email, password);
@@ -52,7 +52,7 @@ const useOnSubmit = (navigation: OnboardingNavigationType) => {
       logUserIn(email, password);
     }
   };
-  return {onSubmit};
+  return {onSubmitRedirect};
 };
 
 export default useOnSubmit;

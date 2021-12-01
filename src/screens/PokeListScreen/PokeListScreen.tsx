@@ -8,7 +8,7 @@ import {usePokemons} from '../../utils';
 interface PokeListScreenProps extends IMainNavScreenProps {}
 
 const PokeListScreen: React.FC<PokeListScreenProps> = ({navigation}) => {
-  const {status, data} = usePokemons();
+  const {status, data, error, isLoading} = usePokemons();
   const goToProfile = () => {
     navigation.navigate(MainNavigatorScreens.PROFILE_SCREEN);
   };
@@ -29,6 +29,10 @@ const PokeListScreen: React.FC<PokeListScreenProps> = ({navigation}) => {
         rightIcon="account-cog"
         headerSubtitle="2front"
       />
+      {console.log(status)}
+      {console.log('data inside screen:', data)}
+      <Text>{status}</Text>
+      <Text>{isLoading ? 'true' : 'false'}</Text>
       {status === 'loading' ? (
         <ActivityIndicator />
       ) : status === 'error' ? (

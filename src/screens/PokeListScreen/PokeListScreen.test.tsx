@@ -9,6 +9,7 @@ beforeEach(() => {
     dispatch: jest.fn(),
   };
 });
+
 test('pokelist screen renders correctly', () => {
   const tree = renderer
     .create(<PokeListScreen navigation={navigation as MainNavigationType} />)

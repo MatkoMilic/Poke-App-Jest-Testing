@@ -1,29 +1,45 @@
-import React, {FC} from 'react';
-import {Switch, Text, TouchableOpacity} from 'react-native';
+import React, {useEffect} from 'react';
+import {Text, View} from 'react-native';
 import {useTheme} from 'react-native-paper';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {ThemeContext} from '../../components';
-import style from './styles';
-import {IOnboardingNavScreenProps} from '../../types';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import styles from './styles';
+import {StatusBar, ScreenContainer} from '../../components';
+import {
+  IOnboardingNavScreenProps,
+  MainNavigatorScreens,
+  NavigatorNames,
+  OnboardingNavigatorScreens,
+} from '../../types';
 
 interface LoadingScreenProps extends IOnboardingNavScreenProps {}
 
-const LoadingScreen: FC = () => {
+const LoadingScreen: React.FC<LoadingScreenProps> = ({navigation}) => {
   const theme = useTheme();
-  const {toggleTheme, isThemeDark} = React.useContext(ThemeContext);
+
+  const chooseNavigator = async () => {
+    const isUserLoggedIn = await AsyncStorage.getItem('activeUser');
+    if (isUserLoggedIn !== null) {
+      navigation.replace(NavigatorNames.MAIN_NAVIGATOR, {
+        screen: MainNavigatorScreens.PROFILE_SCREEN,
+      });
+    } else {
+      navigation.replace(OnboardingNavigatorScreens.LOGIN_SCREEN);
+    }
+  };
+
+  useEffect(() => {
+    chooseNavigator();
+  }, []);
+
   return (
-    <SafeAreaView>
-      <TouchableOpacity>
-        <Switch
-          style={style.switchElement}
-          value={isThemeDark}
-          onValueChange={toggleTheme}
-        />
-      </TouchableOpacity>
-      <Text style={{color: 'red'}}>
-        Loading & theme is: {isThemeDark ? 'dark' : 'light'}
-      </Text>
-    </SafeAreaView>
+    <ScreenContainer>
+      <StatusBar />
+      <View style={styles.titleView}>
+        <Text style={[{color: theme.colors.text}, styles.titleText]}>
+          Loading...please wait
+        </Text>
+      </View>
+    </ScreenContainer>
   );
 };
 

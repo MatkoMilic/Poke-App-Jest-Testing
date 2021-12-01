@@ -12,11 +12,14 @@ import {
   SettingsScreen,
 } from '../../screens';
 import {OnboardingNavigator} from '../OnboardingNavigator';
+import {MainNavigationType, OnboardingNavigationType} from '../../types';
 configure({adapter: new Adapter()});
 
 describe('Test many aspects of OnboardingNavigator', () => {
   let mountOnboardingNavigator: ReactWrapper;
   let renderOnboardingNavigator: RenderAPI;
+  let mainNavigation: Partial<MainNavigationType>;
+  let onboardingNavigation: Partial<OnboardingNavigationType>;
   beforeEach(() => {
     mountOnboardingNavigator = mount(
       <NavigationContainer>
@@ -28,8 +31,13 @@ describe('Test many aspects of OnboardingNavigator', () => {
         <OnboardingNavigator />
       </NavigationContainer>,
     );
+    mainNavigation = {
+      dispatch: jest.fn(),
+    };
+    onboardingNavigation = {
+      dispatch: jest.fn(),
+    };
   });
-
   it('check if OnboardingNavigator renders', () => {
     expect(renderOnboardingNavigator.toJSON()).toBeDefined();
   });
@@ -37,22 +45,30 @@ describe('Test many aspects of OnboardingNavigator', () => {
     expect(mountOnboardingNavigator.exists()).toBeTruthy();
   });
   it('check does OnboardingNavigator go to expected default screen', () => {
-    expect(
-      mountOnboardingNavigator.containsMatchingElement(<LoadingScreen />),
-    ).toEqual(true);
+    expect(mountOnboardingNavigator.find('loadingText')).toBeDefined();
   });
   it('check if another screen is also a child at the same mount', () => {
     expect(
-      mountOnboardingNavigator.containsMatchingElement(<ProfileScreen />),
+      mountOnboardingNavigator.containsMatchingElement(
+        <ProfileScreen navigation={mainNavigation as MainNavigationType} />,
+      ),
     ).toEqual(false);
     expect(
-      mountOnboardingNavigator.containsMatchingElement(<LoginScreen />),
+      mountOnboardingNavigator.containsMatchingElement(
+        <LoginScreen
+          navigation={onboardingNavigation as OnboardingNavigationType}
+        />,
+      ),
     ).toEqual(false);
     expect(
-      mountOnboardingNavigator.containsMatchingElement(<PokeListScreen />),
+      mountOnboardingNavigator.containsMatchingElement(
+        <PokeListScreen navigation={mainNavigation as MainNavigationType} />,
+      ),
     ).toEqual(false);
     expect(
-      mountOnboardingNavigator.containsMatchingElement(<SettingsScreen />),
+      mountOnboardingNavigator.containsMatchingElement(
+        <SettingsScreen navigation={mainNavigation as MainNavigationType} />,
+      ),
     ).toEqual(false);
   });
   it('check is the proper navigator present', () => {

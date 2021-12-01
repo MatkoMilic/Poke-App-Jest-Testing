@@ -21,3 +21,5 @@ export {
   OnboardingNavigatorScreens,
   MainNavigatorScreens,
 } from './navigatorTypes';
+export type {IUserValues} from './IUserValues/IUserValues';
+export {initialUserLoginValues} from './IUserValues/IUserValues';

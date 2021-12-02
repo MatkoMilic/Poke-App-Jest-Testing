@@ -30,7 +30,8 @@
     "react-native-reanimated": "^2.2.4",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
-    "react-query": "^3.32.1",
+    "react-query": "^3.34.0",
+    "react-query-native-devtools": "^3.0.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
@@ -53,7 +54,7 @@
     "babel-jest": "^27.3.1",
     "eslint": "^6.5.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.1.0",
+    "jest": "^25.5.4",
     "jest-transform-stub": "^2.0.0",
     "jsdom": "18.1.0",
     "jsdom-global": "3.0.2",

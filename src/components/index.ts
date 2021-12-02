@@ -5,3 +5,6 @@ export {Header} from './Header';
 export {InputField} from './InputField';
 export {LoginForm} from './LoginForm';
 export {StatusBar} from './StatusBar';
+export {PokemonListItem} from './PokemonListItem';
+export {RQClientProvider} from './RQClientProvider';
+export {UserDetailsProvider, UserDetailsContext} from './UserDetailsProvider';

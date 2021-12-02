@@ -4314,6 +4314,11 @@
   "resolved" "https://registry.npmjs.org/flatted/-/flatted-2.0.2.tgz"
   "version" "2.0.2"
 
+"flatted@^3.1.0":
+  "integrity" "sha512-8/sOawo8tJ4QOBX8YlQBMxL8+RLZfxMQOif9o0KUKTNTjMYElWPE0r/m5VNFxTRd0NSw8qSy8dajrwX4RYI1Hw=="
+  "resolved" "https://registry.npmjs.org/flatted/-/flatted-3.2.4.tgz"
+  "version" "3.2.4"
+
 "for-in@^1.0.2":
   "integrity" "sha1-gQaNKVqBQuwKxybG4iAMMPttXoA="
   "resolved" "https://registry.npmjs.org/for-in/-/for-in-1.0.2.tgz"
@@ -5862,7 +5867,7 @@
     "merge-stream" "^2.0.0"
     "supports-color" "^8.0.0"
 
-"jest@^24.0.0 || ^25.0.0 || ^26.0.0 || ^27.0.0", "jest@^25.1.0":
+"jest@^24.0.0 || ^25.0.0 || ^26.0.0 || ^27.0.0", "jest@^25.5.4":
   "integrity" "sha512-hHFJROBTqZahnO+X+PMtT6G2/ztqAZJveGqz//FnWWHurizkD05PQGzRZOhF3XP6z7SJmL+5tCfW8qV06JypwQ=="
   "resolved" "https://registry.npmjs.org/jest/-/jest-25.5.4.tgz"
   "version" "25.5.4"
@@ -7532,6 +7537,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
+"react-native-flipper@^0.81.0":
+  "integrity" "sha512-xVAdLrr42+noyrhw3CZXjj3/ECXFs6d0X9Zw0VwCzr57vkL2c9LBXuog5LqRXi8IFo5H1R/c3D9keKNcuxmMIw=="
+  "resolved" "https://registry.npmjs.org/react-native-flipper/-/react-native-flipper-0.81.0.tgz"
+  "version" "0.81.0"
+
 "react-native-gesture-handler@*", "react-native-gesture-handler@^1.10.3":
   "integrity" "sha512-cBGMi1IEsIVMgoox4RvMx7V2r6bNKw0uR1Mu1o7NbuHS6BRSVLq0dP34l2ecnPlC+jpWd3le6Yg1nrdCjby2Mw=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-1.10.3.tgz"
@@ -7594,7 +7604,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native@*", "react-native@^0.0.0-0 || ^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || ^0.65.0 || ^0.66.0 || 1000.0.0", "react-native@>=0.38.0", "react-native@>=0.42.0", "react-native@>=0.59", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@0.63.3":
+"react-native@*", "react-native@^0.0.0-0 || ^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || ^0.65.0 || ^0.66.0 || 1000.0.0", "react-native@>=0.38.0", "react-native@>=0.42.0", "react-native@>=0.59", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@>0.62.0", "react-native@0.63.3":
   "integrity" "sha512-71wq13uNo5W8QVQnFlnzZ3AD+XgUBYGhpsxysQFW/hJ8GAt/J5o+Bvhy81FXichp6IBDJDh/JgfHH2gNji8dFA=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.63.3.tgz"
   "version" "0.63.3"
@@ -7627,10 +7637,17 @@
     "use-subscription" "^1.0.0"
     "whatwg-fetch" "^3.0.0"
 
-"react-query@^3.32.1":
-  "integrity" "sha512-7UN8BYBaZb911iJUyJ/T+CjlBGBf5W8rcm3jRQ5wW4f+mt/onvRxJlB0U2r2fsT204poJt6VO0jPlm5dwu3PrQ=="
-  "resolved" "https://registry.npmjs.org/react-query/-/react-query-3.32.1.tgz"
-  "version" "3.32.1"
+"react-query-native-devtools@^3.0.1":
+  "integrity" "sha512-n7Sf3jQz9kdaEWN1gzZkIOePTQ09KOG1KMEQqJRvMylW7mdG8Ec9GqvuFn8bhZ4Y/mnCQcGMbMpDn0kYmKy2DQ=="
+  "resolved" "https://registry.npmjs.org/react-query-native-devtools/-/react-query-native-devtools-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "flatted" "^3.1.0"
+
+"react-query@^3.13.0", "react-query@^3.34.0":
+  "integrity" "sha512-g6L90FeCLzz6+53CbVKYJALBiZR5icOYPjqGGiNgHNeufcnddLZaQGE9wheclk10k6g+o+Dd4/jAtswhjVblXw=="
+  "resolved" "https://registry.npmjs.org/react-query/-/react-query-3.34.0.tgz"
+  "version" "3.34.0"
   dependencies:
     "@babel/runtime" "^7.5.5"
     "broadcast-channel" "^3.4.1"

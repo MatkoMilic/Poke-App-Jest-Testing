@@ -9,6 +9,9 @@ beforeEach(() => {
     dispatch: jest.fn(),
   };
 });
+
+//TODO: this test wont work because pokelist screen
+//contains abort controller which jest TS currently doesnt support
 test('pokelist screen renders correctly', () => {
   const tree = renderer
     .create(<PokeListScreen navigation={navigation as MainNavigationType} />)
